@@ -36,7 +36,7 @@
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->gender }}</td>
                     <td>{{ $row->mobile }}</td>
-                    <td>{{ $row->created_at }}</td>
+                    <td>{{ $row->created_at->diffForHumans() }}</td>
 
                     <td><button type="button" class="btn btn-danger">Delete</button>
                         <button type="button" class="btn btn-warning">Edit</button>
