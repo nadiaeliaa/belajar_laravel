@@ -18,6 +18,16 @@
         <br>
         <br>
         <div class="row">
+
+            @if($message = Session::get('success'))
+            <div class="alert alert-success" role="alert">
+              {{ $message }}
+            </div>
+            @endif
+
+            <br>
+            <br>
+
             <table class="table">
                 <thead>
                   <tr>
@@ -30,16 +40,21 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                @php
+                   $no = 1; 
+                @endphp
+
                 @foreach ($data as $row)
                 <tr>
-                    <th scope="row">{{ $row->id }}</th>
+                    <th scope="row">{{ $no++ }}</th>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->gender }}</td>
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->created_at->diffForHumans() }}</td>
 
-                    <td><button type="button" class="btn btn-danger">Delete</button>
-                        <button type="button" class="btn btn-warning">Edit</button>
+                    <td><a href="deletedata/{{ $row->id }}" type="button" class="btn btn-danger">Delete</a>
+                        <a href="tampilkandata/{{ $row->id }}" ="button" class="btn btn-warning">Edit</a>
                     </td>
                     
                   </tr>

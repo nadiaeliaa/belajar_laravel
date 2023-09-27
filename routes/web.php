@@ -23,3 +23,10 @@ Route::get('/pegawai',[EmployeeController::class, 'index'])->name('pegawai');
 
 Route::get('/tambahpegawai',[EmployeeController::class, 'tambahpegawai'])->name('tambahpegawai');
 Route::post('/insertdata',[EmployeeController::class, 'insertdata'])->name('insertdata');
+
+Route::get('/tampilkandata/{id}',[EmployeeController::class, 'tampilkandata'])->name('tampilkandata');
+
+Route::post('/updatedata/{id}',[EmployeeController::class, 'updatedata'])->name('updatedata');
+
+Route::get('/deletedata/{id}',[EmployeeController::class, 'deletedata'])->name('deletedata');
+
