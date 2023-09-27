@@ -14,7 +14,7 @@
     <h1 class="text-center mb-4">Data Pegawai</h1>
 
     <div class="container">
-        <button type="button" class="btn btn-success">Tambah +</button>
+        <a href="/tambahpegawai" type="button" class="btn btn-success">Tambah +</a>
         <br>
         <br>
         <div class="row">
@@ -25,18 +25,26 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Mobile</th>
+                    <th scope="col">Dibuat</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                @foreach ($data as $row)
+                <tr>
+                    <th scope="row">{{ $row->id }}</th>
+                    <td>{{ $row->name }}</td>
+                    <td>{{ $row->gender }}</td>
+                    <td>{{ $row->mobile }}</td>
+                    <td>{{ $row->created_at }}</td>
+
                     <td><button type="button" class="btn btn-danger">Delete</button>
-                        <button type="button" class="btn btn-warning">Edit</button></td>
+                        <button type="button" class="btn btn-warning">Edit</button>
+                    </td>
+                    
                   </tr>
+                @endforeach
+                  
                 </tbody>
               </table>
         </div>
