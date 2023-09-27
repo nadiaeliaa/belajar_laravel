@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->enum('gender',['male','female']);
             $table->string('mobile');
+            $table->string('photo');
+
             $table->timestamps();
         });
     }

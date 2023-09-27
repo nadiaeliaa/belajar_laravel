@@ -19,7 +19,12 @@ class EmployeeController extends Controller
 
     public function insertdata(Request $request){
         //dd($request->all());
-        Employee::create($request->all());
+        $data = Employee::create($request->all());
+        if($request->hasFile('photo')){
+            $request->file('photo')->move('employeePhoto/', $request->file('photo')->getClientOriginalName());
+            $data->photo = $request->file('photo')->getClientOriginalName();
+            $data->save();
+        }
         return redirect()->route('pegawai')->with('success','data added successfully');
     }
 

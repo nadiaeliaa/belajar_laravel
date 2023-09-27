@@ -32,10 +32,11 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nama</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Mobile</th>
-                    <th scope="col">Dibuat</th>
+                    <th scope="col">Created at</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -48,13 +49,16 @@
                 @foreach ($data as $row)
                 <tr>
                     <th scope="row">{{ $no++ }}</th>
+                    <td>
+                    <img src="{{ asset('employeePhoto/'.$row->photo) }}" alt="" style="width: 50px;">
+                    </td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->gender }}</td>
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->created_at->diffForHumans() }}</td>
 
-                    <td><a href="deletedata/{{ $row->id }}" type="button" class="btn btn-danger">Delete</a>
-                        <a href="tampilkandata/{{ $row->id }}" ="button" class="btn btn-warning">Edit</a>
+                    <td><a href="" type="button" class="btn btn-danger delete" data-id="{{ $row->id }}">Delete</a>
+                        <a href="tampilkandata/{{ $row->id }}" type="button" class="btn btn-warning">Edit</a>
                     </td>
                     
                   </tr>
@@ -70,6 +74,9 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -77,4 +84,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
   </body>
+
+  <script>
+          
+  </script>
+
 </html>
