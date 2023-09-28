@@ -18,16 +18,18 @@
         <a href="/tambahpegawai" type="button" class="btn btn-success">Tambah +</a>
         <br>
         <br>
+        
+        <div class="row g-3 align-items-center">
+          
+          <div class="col-auto">
+            <form action="/pegawai" method="GET">
+              <input type="search" id="search" name="search" class="form-control" aria-describedby="passwordHelpInline">
+            </form>
+          </div>
+          
+        </div>
+
         <div class="row">
-
-            @if($message = Session::get('success'))
-            <div class="alert alert-success" role="alert">
-              {{ $message }}
-            </div>
-            @endif
-
-            <br>
-            <br>
 
             <table class="table">
                 <thead>
@@ -47,9 +49,9 @@
                    $no = 1; 
                 @endphp
 
-                @foreach ($data as $row)
+                @foreach ($data as $index => $row)
                 <tr>
-                    <th scope="row">{{ $no++ }}</th>
+                    <th scope="row">{{ $index + $data->firstItem() }}</th>
                     <td>
                     <img src="{{ asset('employeePhoto/'.$row->photo) }}" alt="" style="width: 50px;">
                     </td>
@@ -67,6 +69,9 @@
                   
                 </tbody>
               </table>
+
+              {{ $data->links() }}
+
         </div>
     </div>
 
@@ -75,7 +80,8 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
@@ -116,7 +122,10 @@
   </script>
 
   <script>
-    toastr.success('Data has been saved successfully!', 'Congrats');
+    @if (Session::has('success'))
+    toastr.success("{{ Session::get('success') }}")
+    @endif
+
   </script>
 
 </html>
