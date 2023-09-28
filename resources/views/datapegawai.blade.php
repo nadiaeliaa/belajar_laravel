@@ -16,6 +16,8 @@
 
     <div class="container">
         <a href="/tambahpegawai" type="button" class="btn btn-success">Tambah +</a>
+        <a href="/exportpdf" type="button" class="btn btn-info">Export PDF</a>
+
         <br>
         <br>
         

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use PDF;
+
 
 use function PHPSTORM_META\elementType;
 
@@ -12,7 +14,7 @@ class EmployeeController extends Controller
     public function index(Request $request){
 
         if($request->has('search')){
-            $data = Employee::where('name','LIKE','%' .$request->search. '%')->paginate(3);
+            $data = Employee::where('name','LIKE','%' .$request->search. '%')->paginate();
         }else{
             $data = Employee::paginate(3);
         }
@@ -53,5 +55,13 @@ class EmployeeController extends Controller
         $data = Employee::find($id);
         $data->delete();
         return redirect()->route('pegawai')->with('success','data deleted successfully');
+    }
+
+    public function exportpdf(){
+        $data = Employee::all();
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('datapegawai-pdf');
+        return $pdf->download('data.pdf');
     }
 }
