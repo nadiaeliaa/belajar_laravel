@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EmployeeExport;
+use App\Imports\EmployeeImport;
+
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use PDF;
+use Excel;
 
 use function PHPSTORM_META\elementType;
 class EmployeeController extends Controller
 {
     public function index(){
 
-        $data = Employee::paginate(4);
+        $data = Employee::paginate(6);
         return view('datapegawai',compact('data'));
     }
 
     public function search(Request $request){
         if($request->has('search')) {
-            $data = Employee::where('name','LIKE','%'.$request->search.'%')->paginate(4);
+            $data = Employee::where('name','LIKE','%'.$request->search.'%')->paginate(6);
         }
         else {
-            $data = Employee::paginate(4);
+            $data = Employee::paginate(6);
         }
         return view('datapegawai',['data' => $data]);
     }
@@ -65,6 +69,20 @@ class EmployeeController extends Controller
         view()->share('data', $data);
         $pdf = PDF::loadview('datapegawai-pdf');
         return $pdf->download('data.pdf');
+    }
+
+    public function exportexcel(){
+        return Excel::download(new EmployeeExport, 'datapegawai.xlsx');
+    }
+
+    public function importexcel(Request $request){
+        $data = $request->file('file');
+
+        $filename = $data->getClientOriginalName();
+        $data->move('employeeData', $filename);
+
+        Excel::import(new EmployeeImport, \public_path('/employeeData/'.$filename));
+        return \redirect()->back();
     }
 
     

@@ -33,5 +33,12 @@ Route::get('/deletedata/{id}',[EmployeeController::class, 'deletedata'])->name('
 //export pdf
 Route::get('/exportpdf',[EmployeeController::class, 'exportpdf'])->name('exportpdf');
 
+//export excel
+Route::get('/exportexcel',[EmployeeController::class, 'exportexcel'])->name('exportexcel');
+
+
 //search employee
 Route::get('/pegawai/search',[EmployeeController::class, 'search'])->name('search');
+
+//import excel
+Route::post('/importexcel',[EmployeeController::class, 'importexcel'])->name('importexcel');

@@ -15,8 +15,7 @@
     <h1 class="text-center mb-4">Data Pegawai</h1>
 
     <div class="container">
-        <a href="/tambahpegawai" type="button" class="btn btn-success">Tambah +</a>
-        <a href="/exportpdf" type="button" class="btn btn-info">Export PDF</a>
+        <a href="/tambahpegawai" type="button" class="btn btn-primary">Tambah +</a>
 
         
         <div class="row g-3 align-items-center mt-2">
@@ -67,6 +66,41 @@
                   
                 </tbody>
               </table>
+
+              <div class="container">
+              <a href="/exportpdf" type="button" class="btn btn-info">Export PDF</a>
+              <a href="/exportexcel" type="button" class="btn btn-success">Export Excel</a>
+              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Import Data
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Masukkan File Excel</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form action="/importexcel" method="POST" enctype="multipart/form-data">
+                      @csrf
+          
+                      <div class="modal-body">
+                       <div class="formgroup">
+                        <input type="file" name="file" required>
+                       </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              </div><br><br>
 
               {{ $data->links() }}
 
