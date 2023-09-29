@@ -18,17 +18,13 @@
         <a href="/tambahpegawai" type="button" class="btn btn-success">Tambah +</a>
         <a href="/exportpdf" type="button" class="btn btn-info">Export PDF</a>
 
-        <br>
-        <br>
         
-        <div class="row g-3 align-items-center">
-          
+        <div class="row g-3 align-items-center mt-2">
           <div class="col-auto">
-            <form action="/pegawai" method="GET">
-              <input type="search" id="search" name="search" class="form-control" aria-describedby="passwordHelpInline">
+            <form action="/pegawai/search" method="GET">
+              <input type="text" id="search" name="search" class="form-control">
             </form>
-          </div>
-          
+          </div>  
         </div>
 
         <div class="row">

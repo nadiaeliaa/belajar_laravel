@@ -6,21 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use PDF;
 
-
 use function PHPSTORM_META\elementType;
-
 class EmployeeController extends Controller
 {
-    public function index(Request $request){
+    public function index(){
 
-        if($request->has('search')){
-            $data = Employee::where('name','LIKE','%' .$request->search. '%')->paginate();
-        }else{
-            $data = Employee::paginate(3);
-        }
-
-        $data = Employee::paginate(3);
+        $data = Employee::paginate(4);
         return view('datapegawai',compact('data'));
+    }
+
+    public function search(Request $request){
+        if($request->has('search')) {
+            $data = Employee::where('name','LIKE','%'.$request->search.'%')->paginate(4);
+        }
+        else {
+            $data = Employee::paginate(4);
+        }
+        return view('datapegawai',['data' => $data]);
     }
 
     public function tambahpegawai(){
@@ -64,4 +66,6 @@ class EmployeeController extends Controller
         $pdf = PDF::loadview('datapegawai-pdf');
         return $pdf->download('data.pdf');
     }
+
+    
 }

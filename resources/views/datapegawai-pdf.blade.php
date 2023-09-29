@@ -2,6 +2,13 @@
 <html>
 <head>
 <style>
+
+#titlepdf {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -28,7 +35,7 @@
 </head>
 <body>
 
-<center><h1 class="text-align:center">Employee Data</h1></center>
+<center><h1 id="titlepdf" class="text-align:center">Employee Data</h1></center>
 
 <table id="customers">
   <tr>
