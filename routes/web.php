@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route; 
 
 
@@ -16,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $jumlahpegawai = Employee::count();
+    $jumlahpegawaimale = Employee::where('gender','male')->count();
+    $jumlahpegawaifemale = Employee::where('gender','female')->count();
+
+    return view('welcome', compact('jumlahpegawai','jumlahpegawaimale','jumlahpegawaifemale'));
 });
 
 Route::get('/pegawai',[EmployeeController::class, 'index'])->name('pegawai');
