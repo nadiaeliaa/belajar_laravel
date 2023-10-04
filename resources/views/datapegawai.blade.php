@@ -28,7 +28,7 @@
 
   <div class="container">
     <a href="/tambahpegawai" type="button" class="btn btn-primary">Tambah +</a>
-  
+    {{-- {{ Session::get('url_page') }} --}}
     
     <div class="row g-3 align-items-center mt-2">
       <div class="col-auto">

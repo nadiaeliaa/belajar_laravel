@@ -178,7 +178,7 @@
           <img src="{{ asset('template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -243,6 +243,15 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Pegawai
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
               </p>
             </a>
           </li>

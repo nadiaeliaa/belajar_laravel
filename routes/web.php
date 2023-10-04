@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LoginController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route; 
 
@@ -24,7 +25,7 @@ Route::get('/', function () {
     return view('welcome', compact('jumlahpegawai','jumlahpegawaimale','jumlahpegawaifemale'));
 });
 
-Route::get('/pegawai',[EmployeeController::class, 'index'])->name('pegawai');
+Route::get('/pegawai',[EmployeeController::class, 'index'])->name('pegawai')->middleware('auth');
 
 Route::get('/tambahpegawai',[EmployeeController::class, 'tambahpegawai'])->name('tambahpegawai');
 Route::post('/insertdata',[EmployeeController::class, 'insertdata'])->name('insertdata');
@@ -47,3 +48,22 @@ Route::get('/pegawai/search',[EmployeeController::class, 'search'])->name('searc
 
 //import excel
 Route::post('/importexcel',[EmployeeController::class, 'importexcel'])->name('importexcel');
+
+
+//register
+Route::get('/register',[LoginController::class, 'register'])->name('register');
+
+//registerprocess
+Route::post('/registerprocess',[LoginController::class, 'registerprocess'])->name('registerprocess');
+
+
+//login
+Route::get('/login',[LoginController::class, 'login'])->name('login');
+
+//loginprocess
+Route::post('/loginprocess',[LoginController::class, 'loginprocess'])->name('loginprocess');
+
+
+//logout
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+

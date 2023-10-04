@@ -7,8 +7,9 @@ use App\Imports\EmployeeImport;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use PDF;
-use Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 
 use function PHPSTORM_META\elementType;
 class EmployeeController extends Controller
@@ -16,15 +17,19 @@ class EmployeeController extends Controller
     public function index(){
 
         $data = Employee::paginate(6);
+        Session::put('url_page', request()->fullUrl());
         return view('datapegawai',compact('data'));
     }
 
     public function search(Request $request){
         if($request->has('search')) {
             $data = Employee::where('name','LIKE','%'.$request->search.'%')->paginate(6);
+            Session::put('url_page', request()->fullUrl());
+
         }
         else {
             $data = Employee::paginate(6);
+            Session::put('url_page', request()->fullUrl());
         }
         return view('datapegawai',['data' => $data]);
     }
@@ -35,6 +40,11 @@ class EmployeeController extends Controller
 
     public function insertdata(Request $request){
         //dd($request->all());
+        $this->validate($request,[
+            'name' => 'required|min:5|max:50',
+            'mobile' => 'required|min:10|max:15',
+        ]);
+
         $data = Employee::create($request->all());
         if($request->hasFile('photo')){
             $request->file('photo')->move('employeePhoto/', $request->file('photo')->getClientOriginalName());
@@ -54,6 +64,9 @@ class EmployeeController extends Controller
     public function updatedata(Request $request, $id){
         $data = Employee::find($id);
         $data->update($request->all());
+        if(session('url_page')){
+            return redirect(session('url_page'))->with('success','data updated successfully');
+        }
         return redirect()->route('pegawai')->with('success','data updated successfully');
     }
 
