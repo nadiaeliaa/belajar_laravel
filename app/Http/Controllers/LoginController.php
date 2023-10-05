@@ -31,6 +31,7 @@ class LoginController extends Controller
 
         $this->validate($request,[
             'name' => 'required|min:5|max:50',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
         ]);
 

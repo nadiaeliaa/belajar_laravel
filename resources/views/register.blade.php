@@ -27,34 +27,38 @@
         @csrf
         <div class="input-group mb-3">
           <input name="name" type="text" class="form-control" placeholder="Full name">
-          @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-          @enderror
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
+        @error('name')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email">
+          <br>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+        @error('email')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-          @error('password')
-            <div class="alert alert-danger">{{ $message }}</div>
-          @enderror
+          <input type="password" name="password" class="form-control" placeholder="Password"><br>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+        @error('password')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
