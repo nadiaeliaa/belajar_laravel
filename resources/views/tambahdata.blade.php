@@ -22,11 +22,29 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Gender</label>
+                    <label for="exampleInputEmail1" class="form-label">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('dob')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Gender</label><br>
                     <select class="form-select" name="gender" aria-label="Default select example">
                       <option selected>Choose Gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Agama</label><br>
+                    <select class="form-select" name="id_religions" aria-label="Default select example">
+                      <option selected>Choose Religion</option>
+                      @foreach ($dataagama as $data)
+                      <option value="{{ $data->id }}">{{ $data->name }}</option>
+                      @endforeach
                     </select>
                   </div>
 

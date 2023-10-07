@@ -7,6 +7,7 @@ use App\Imports\EmployeeImport;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Religion;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +18,7 @@ class EmployeeController extends Controller
     public function index(){
 
         $data = Employee::paginate(6);
+        // dd($data);
         Session::put('url_page', request()->fullUrl());
         return view('datapegawai',compact('data'));
     }
@@ -35,7 +37,8 @@ class EmployeeController extends Controller
     }
 
     public function tambahpegawai(){
-        return view('tambahdata');
+        $dataagama = Religion::all();
+        return view('tambahdata', compact('dataagama'));
     }
 
     public function insertdata(Request $request){

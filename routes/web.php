@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReligionController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route; 
 
@@ -67,3 +68,11 @@ Route::post('/loginprocess',[LoginController::class, 'loginprocess'])->name('log
 //logout
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
+
+
+
+Route::get('/dataagama',[ReligionController::class, 'dataagama'])->name('dataagama')->middleware('auth');
+
+Route::get('/tambahagama',[ReligionController::class, 'tambahagama'])->name('tambahagama');
+
+Route::post('/insertdataagama',[ReligionController::class, 'insertdataagama'])->name('insertdataagama');
