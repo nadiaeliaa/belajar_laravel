@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReligionController;
+use App\Http\Controllers\GoogleController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route; 
 
@@ -71,3 +72,9 @@ Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 Route::get('/dataagama',[ReligionController::class, 'dataagama'])->name('dataagama')->middleware('auth');
 Route::get('/tambahagama',[ReligionController::class, 'tambahagama'])->name('tambahagama');
 Route::post('/insertdataagama',[ReligionController::class, 'insertdataagama'])->name('insertdataagama');
+
+
+
+//routing login google
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('auth.google.callback');

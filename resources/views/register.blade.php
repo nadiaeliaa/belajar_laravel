@@ -60,25 +60,20 @@
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
           <!-- /.col -->
-          <div class="col-4">
+          <div class="text-center">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </div>
+          <div class="social-auth-links text-center mt-2 mb-2">
+            <a href="{{ route('auth.google') }}" class="btn btn-block btn-danger">
+              <i class="fab fa-google-plus mr-2"></i> Sign up using Google+
+            </a>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
-
       <a href="/login" class="text-center">I already have a membership</a>
+      <br>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

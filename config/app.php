@@ -188,4 +188,6 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
+    'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
 ];
