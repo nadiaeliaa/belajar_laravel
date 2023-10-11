@@ -36,7 +36,7 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Religion Name</th>
-                <th scope="col">Action</th>
+                {{-- <th scope="col">Action</th> --}}
               </tr>
             </thead>
             <tbody>
@@ -51,11 +51,11 @@
                 <td>{{ $row->name }}</td>
                 
                 {{-- button delete dan edit --}}
-                <td><a href="#" type="button" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete</a>
-                    <a href="tampilkandata/{{ $row->id }}" type="button" class="btn btn-warning">Edit</a>
-                </td>
+                {{-- <td><a href="deletedataagama/{{ $row->id }}" type="button" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete</a>
+                    <a href="tampilkandataagama/{{ $row->id }}" type="button" class="btn btn-warning">Edit</a>
+                </td> --}}
                 
-              </tr>
+            </tr>
             @endforeach
               
             </tbody>

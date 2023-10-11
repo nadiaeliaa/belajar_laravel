@@ -28,17 +28,14 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
-
 Route::group(['middleware' => ['auth','hakakses:admin']], function(){
-    //routing pegawai
+    //hakakses admin
     Route::get('/pegawai',[EmployeeController::class, 'index'])->name('pegawai')->middleware('auth');
     });
 
 
-    
 //search pegawai
 Route::get('/pegawai/search',[EmployeeController::class, 'search'])->name('search');
-
 
 
 //routing crudpegawai
@@ -49,14 +46,12 @@ Route::post('/updatedata/{id}',[EmployeeController::class, 'updatedata'])->name(
 Route::get('/deletedata/{id}',[EmployeeController::class, 'deletedata'])->name('deletedata');
 
 
-
 //import excel
 Route::post('/importexcel',[EmployeeController::class, 'importexcel'])->name('importexcel');
 //export pdf
 Route::get('/exportpdf',[EmployeeController::class, 'exportpdf'])->name('exportpdf');
 //export excel
 Route::get('/exportexcel',[EmployeeController::class, 'exportexcel'])->name('exportexcel');
-
 
 
 //routing login, logout, dan register
@@ -67,12 +62,10 @@ Route::post('/loginprocess',[LoginController::class, 'loginprocess'])->name('log
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
-
 //routing agama
 Route::get('/dataagama',[ReligionController::class, 'dataagama'])->name('dataagama')->middleware('auth');
-Route::get('/tambahagama',[ReligionController::class, 'tambahagama'])->name('tambahagama');
-Route::post('/insertdataagama',[ReligionController::class, 'insertdataagama'])->name('insertdataagama');
-
+Route::get('/tambahagama',[ReligionController::class, 'tambahagama'])->name('tambahagama')->middleware('auth');
+Route::post('/insertdataagama',[ReligionController::class, 'insertdataagama'])->name('insertdataagama')->middleware('auth');
 
 
 //routing login google
