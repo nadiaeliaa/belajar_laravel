@@ -233,7 +233,7 @@
             <a href="/" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Dashboard Rekap
               </p>
             </a>
           </li>
@@ -242,19 +242,19 @@
             <a href="/pegawai" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Data Pegawai
+                Data Mahasiswa
               </p>
             </a>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/dataagama" class="nav-link">
               <i class="nav-icon fas fa-hands-praying"></i>
               <p>
                 Data Agama
               </p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a href="/logout" class="nav-link">

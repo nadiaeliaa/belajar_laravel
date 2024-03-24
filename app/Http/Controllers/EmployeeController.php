@@ -16,13 +16,13 @@ use function PHPSTORM_META\elementType;
 class EmployeeController extends Controller
 {
     public function index(){
+        //mengatur pagination dan menampilkan data mahasiswa
+        $data = Employee::orderBy('nim','desc')->paginate(6);
 
-        $data = Employee::paginate(6);
-        // dd($data);
         Session::put('url_page', request()->fullUrl());
         return view('datapegawai',compact('data'));
     }
-
+        //fungsi search mahasiswa berdasarkan nama
     public function search(Request $request){
         if($request->has('search')) {
             $data = Employee::where('name','LIKE','%'.$request->search.'%')->paginate(6);
@@ -30,6 +30,7 @@ class EmployeeController extends Controller
 
         }
         else {
+            //menampilkan data mahasiswa dengan 6 data per halaman
             $data = Employee::paginate(6);
             Session::put('url_page', request()->fullUrl());
         }
@@ -37,17 +38,19 @@ class EmployeeController extends Controller
     }
 
     public function tambahpegawai(){
+        //menambahkan data mahasiswa dengan mengarahkan ke halaman tambahdata
         $dataagama = Religion::all();
         return view('tambahdata', compact('dataagama'));
     }
 
     public function insertdata(Request $request){
-        //dd($request->all());
+        //validasi data yang diinputkan
         $this->validate($request,[
             'name' => 'required|min:5|max:50',
             'mobile' => 'required|min:10|max:15',
         ]);
 
+        //menambahkan data mahasiswa dan settingan upload foto serta mengarahkan ke halaman data mahasiswa
         $data = Employee::create($request->all());
         if($request->hasFile('photo')){
             $request->file('photo')->move('employeePhoto/', $request->file('photo')->getClientOriginalName());
@@ -58,6 +61,7 @@ class EmployeeController extends Controller
     }
 
     public function tampilkandata($id){
+        //menampilkan data mahasiswa dengan parameter id
         $data = Employee::find($id);
         //dd($data);
 
@@ -65,6 +69,7 @@ class EmployeeController extends Controller
     }
 
     public function updatedata(Request $request, $id){
+        //mengupdate data dan kembali diarahkab ke halaman data mahasiswa
         $data = Employee::find($id);
         $data->update($request->all());
         if(session('url_page')){
@@ -74,6 +79,7 @@ class EmployeeController extends Controller
     }
 
     public function deletedata($id){
+        //menghapus data dan kembali diarahkan ke halaman data mahasiswa
         $data = Employee::find($id);
         $data->delete();
         return redirect()->route('pegawai')->with('success','data deleted successfully');

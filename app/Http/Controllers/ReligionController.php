@@ -37,7 +37,7 @@ class ReligionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function tampilkandataagama(string $id)
+    public function tampildataagama(string $id)
     {
         //
     }

@@ -4,7 +4,7 @@
 <body>
   <br>
   <br>
-  <h1 class="text-center mb-4 mt-5">Tambah Data Pegawai</h1>
+  <h1 class="text-center mb-4 mt-5">Tambah Data Mahasiswa</h1>
 
   <div class="container mb-5">
       <div class="row justify-content-center">
@@ -12,10 +12,24 @@
             <div class="card">
               <div class="card-body">
                 <form action="/insertdata" method="POST" enctype="multipart/form-data">
-                  @csrf 
+                  @csrf
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">NIM</label>
+                    <input type="text" name="nim" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Full Name</label>
                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -39,7 +53,15 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Agama</label><br>
+                    <label for="exampleInputEmail1" class="form-label">Age</label>
+                    <input type="text" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Religion</label><br>
                     <select class="form-select" name="id_religions" aria-label="Default select example">
                       <option selected>Choose Religion</option>
                       @foreach ($dataagama as $data)

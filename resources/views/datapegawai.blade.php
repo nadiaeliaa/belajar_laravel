@@ -14,12 +14,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Data Pegawai</h1>
+          <h1 class="m-0">Data Mahasiswa</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Data Pegawai</li>
+            <li class="breadcrumb-item active">Data Mahasiswa</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -43,9 +43,12 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Photo</th>
-                <th scope="col">Name</th>
-                <th scope="col">Date of BIrth</th>
+                <th scope="col">NIM</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date of Birth</th>
                 <th scope="col">Gender</th>
+                <th scope="col">Age</th>
                 <th scope="col">Religion</th>
                 <th scope="col">Mobile</th>
                 <th scope="col">Created at</th>
@@ -64,9 +67,12 @@
                 <td>
                 <img src="{{ asset('employeePhoto/'.$row->photo) }}" alt="" style="width: 50px;">
                 </td>
+                <td>{{ $row->nim }}</td>
                 <td>{{ $row->name }}</td>
+                <td>{{ $row->address }}</td>
                 <td>{{ $row->dob }}</td>
                 <td>{{ $row->gender }}</td>
+                <td>{{ $row->age }}</td>
                 <td>{{ optional($row->religion)->name }}</td>
                 <td>{{ $row->mobile }}</td>
                 <td>{{ $row->created_at->diffForHumans() }}</td>
@@ -81,7 +87,7 @@
             </tbody>
           </table>
   
-          <div class="container">
+          {{-- <div class="container">
           <a href="/exportpdf" type="button" class="btn btn-info">Export PDF</a>
           <a href="/exportexcel" type="button" class="btn btn-success">Export Excel</a>
           <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -113,7 +119,7 @@
   
               </div>
             </div>
-          </div>
+          </div> --}}
           </div><br><br>
   
           {{ $data->links() }}
