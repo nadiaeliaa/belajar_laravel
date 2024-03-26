@@ -247,14 +247,14 @@
             </a>
           </li>
 
-          {{-- <li class="nav-item">
+          <li class="nav-item">
             <a href="/dataagama" class="nav-link">
               <i class="nav-icon fas fa-hands-praying"></i>
               <p>
                 Data Agama
               </p>
             </a>
-          </li> --}}
+          </li>
 
           <li class="nav-item">
             <a href="/logout" class="nav-link">

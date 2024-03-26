@@ -12,7 +12,7 @@ class ReligionController extends Controller
      */
     public function dataagama()
     {
-        $data = Religion::paginate(5);
+        $data = Religion::paginate(6);
         return view('dataagama', compact('data'));
     }
 

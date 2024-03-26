@@ -52,7 +52,6 @@
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Gender</label><br>
                     <select class="form-select" value="{{ $data->gender }}" name="gender" aria-label="Default select example">
-                      <option selected>{{ $data->gender }}</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
